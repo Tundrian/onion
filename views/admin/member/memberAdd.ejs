@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../../partials/head.ejs') %>
+<body>
+  <h1>Add member</h1>
+  <form action="/api/member" method="POST">
+    <div class="mb-3">
+      <label for="memberNumberInput" class="form-label">Member Number</label>
+      <input type="text" class="form-control" id="memberNumberInput" aria-describedby="memberNumberHelp" name="memberNumber">
+      <div id="memberNumberHelp" class="form-text">Enter a unique member number</div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <%- include('../../partials/script.ejs') %>
+</body>
+</html>

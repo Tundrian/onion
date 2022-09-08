@@ -1,14 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Onion</title>
-</head>
+<%- include('partials/head.ejs') %>
 <body>
     <h1>Home</h1>
-    <a href="/login"> Login</a>
-    <a href="/signup"> Signup</a>
+    <button class="btn btn-primary"><a href="/login"> Login</a></button>
+    <button class="btn btn-primary"><a href="/signup"> Signup</a></button>
+
+    <%- include('partials/script.ejs') %>
 </body>
 </html>
