@@ -4,7 +4,13 @@ const asyncHandler = require('express-async-handler')
 const getMembers = asyncHandler(async (req, res) => {
   try{
     const allMembers = await Member.find()
-    res.status(200).json(allMembers)
+    console.log('controller: ', allMembers)
+    if(res){
+      res.status(200).json(allMembers)
+    }else{
+      return allMembers
+    }
+   
   } catch (err){
     throw new Error(err)
   }
@@ -23,7 +29,8 @@ const getMembers = asyncHandler(async (req, res) => {
   console.log(req.body)
   try{
     const member = await Member.create(req.body)
-    res.status(200).json(member)
+    // res.status(200).json(member)
+    res.redirect('/admin/members')
   } catch (err){
     throw new Error(err)
   }
