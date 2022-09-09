@@ -7,4 +7,5 @@ const { ensureAuth, ensureGuest } = require('../middleware/auth')
 router.get('/', adminController.getAdminDashboard)
 router.get('/members', adminController.getAdminMembers)
 router.get('/memberAdd', adminController.getAdminMembersAdd)
+router.get('/member/:id', adminController.getAdminMember)
 module.exports = router

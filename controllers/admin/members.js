@@ -5,12 +5,8 @@ const getMembers = asyncHandler(async (req, res) => {
   try{
     const allMembers = await Member.find()
     console.log('controller: ', allMembers)
-    if(res){
-      res.status(200).json(allMembers)
-    }else{
-      return allMembers
-    }
-   
+    // res.status(200).json(allMembers)
+    return allMembers
   } catch (err){
     throw new Error(err)
   }
@@ -19,7 +15,9 @@ const getMembers = asyncHandler(async (req, res) => {
  const getMember = asyncHandler(async (req, res) => {
   try{
     const member = await Member.findOne({_id: req.params.id})
-    res.status(200).json(member)
+    // res.status(200).json(member)
+    return member
+    
   } catch (err){
     throw new Error(err)
   }

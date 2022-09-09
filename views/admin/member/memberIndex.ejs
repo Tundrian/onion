@@ -8,6 +8,13 @@
     <li><button class="btn btn-primary"><a href="/admin/member/view">Get All</a></button></li>
     <li><button class="btn btn-success"><a href="/admin/memberAdd">Add</a></button></li>
   </ul>
+
+  <ul>
+    <% members.forEach(member => { %>
+      <li><a href="/admin/member/<%=member._id%>"><%= member.memberNumber %></a></li>
+    <% }) %>
+  </ul>
+
   <%- include('../../partials/script.ejs') %>
 </body>
 </html>
