@@ -3,8 +3,18 @@
     <%- include('../../partials/head.ejs') %>
 <body>
     <h1>Member View</h1>
-    <% console.log(member) %>
-    <p><%= member.memberNumber %></p>    
+    <button id="edit">Edit</button>
+    <button id="cancelEdit" disabled hidden>Cancel Edit</button>
+    <button id="delete" hidden disabled>Delete</button>
+
+    <form action="" method="POST">
+        <input name="_method" type="hidden" value="PUT">
+        <input hidden id="_id" name="_id" type="text" value=<%= member._id %>>
+        <input id="memberNumber" name="memberNumber" type="text" value=<%= member.memberNumber %>>
+        <button id='submit' type="submit" disabled hidden>Confirm</button>
+    </form>
+
+    <script src="/js/editForm.js"></script>
     <%- include('../../partials/script.ejs') %>
 </body>
 </html>

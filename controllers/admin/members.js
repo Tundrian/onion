@@ -4,8 +4,6 @@ const asyncHandler = require('express-async-handler')
 const getMembers = asyncHandler(async (req, res) => {
   try{
     const allMembers = await Member.find()
-    console.log('controller: ', allMembers)
-    // res.status(200).json(allMembers)
     return allMembers
   } catch (err){
     throw new Error(err)
@@ -15,7 +13,6 @@ const getMembers = asyncHandler(async (req, res) => {
  const getMember = asyncHandler(async (req, res) => {
   try{
     const member = await Member.findOne({_id: req.params.id})
-    // res.status(200).json(member)
     return member
     
   } catch (err){
@@ -24,10 +21,9 @@ const getMembers = asyncHandler(async (req, res) => {
  })
 
  const addMember = asyncHandler(async (req, res) => {
-  console.log(req.body)
+  console.log('addMember')
   try{
     const member = await Member.create(req.body)
-    // res.status(200).json(member)
     res.redirect('/admin/members')
   } catch (err){
     throw new Error(err)
@@ -35,14 +31,16 @@ const getMembers = asyncHandler(async (req, res) => {
  })
 
  const editMember = asyncHandler(async (req, res) => {
+  console.log('edit member')
   try{
     const member = await Member.findOne({_id: req.params.id})
     if(!member){
       res.status(400)
       throw new Error('Member not found')
     }
-    const updatedMember = await Member.findOneAndUpdate({ _id: req.params.id}, req.body)
-    res.status(200).json(updatedMember)
+    await Member.findOneAndUpdate({ _id: req.params.id}, req.body)
+    const members = await getMembers()
+    res.render('admin/member/memberIndex.ejs', { members: members}) 
   } catch (err){
     throw new Error(err)
   }
